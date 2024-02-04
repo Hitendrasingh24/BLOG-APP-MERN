@@ -7,6 +7,7 @@ dotenv.config();
 
 app.use(express.json());
 
+
 mongoose.connect(process.env.MONGO)
 .then(()=>{
     console.log("DataBase connected")
