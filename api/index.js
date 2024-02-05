@@ -1,7 +1,9 @@
-const express = require('express')
+import express  from 'express';
 const app = express();
-const dotenv =require('dotenv');
-const mongoose =require('mongoose')
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import userRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js';
 
 dotenv.config();
 
@@ -16,11 +18,9 @@ mongoose.connect(process.env.MONGO)
     console.log(err)
 })
 
-app.get('/get',(req,res)=>{
-    res.send("hi")
-})
-
-
 app.listen(5000,()=>{
 console.log("sever started")
 })
+
+app.use('/api/user',userRoutes);
+app.use('/api/auth',authRoutes);
