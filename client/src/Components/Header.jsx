@@ -3,7 +3,7 @@ import React from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {FaSun,FaMoon} from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
-// import (toggleTheme) from 
+
 export default function Header() {
   const path = useLocation().pathname
   return ( 
