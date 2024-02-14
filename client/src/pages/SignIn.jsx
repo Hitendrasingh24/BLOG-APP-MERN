@@ -16,7 +16,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      return dispatch(signInFailure('Please fill all the fields'));
+      return setErrorMessage('Please fill out all fields.');
     }
     try {
       const res = await fetch('/api/auth/signin', {
@@ -26,12 +26,14 @@ export default function SignIn() {
       });
       const data = await res.json();
       if (data.success === false) {
+        return setErrorMessage(data.message);
       }
 
       if (res.ok) {
         navigate('/');
       }
     } catch (error) {
+      return setErrorMessage(error.message);
     }
   };
   return (
